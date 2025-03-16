@@ -3,39 +3,56 @@
     padding: 0;
 }
 
+
+
 .cabecera {
     font-family: "Roboto", sans-serif;
     font-size: 25px;
     background-color: #232530;
     color: white;
+    padding: 10px 30px;
     height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    padding-right: 30px;
-    padding-left: 30px;
 }
 
-.menu ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
+@media (max-width: 991px) {
+    .navbar-collapse {
+        position: absolute;
+        background-color: #232530;
+        top: 100%;
+        width: 100%;
+        overflow: hidden; 
+    }
+
+    .navbar-nav {
+        width: 100%; 
+    }
+
+    .nav-item {
+        padding: 5px 0; 
+    }
 }
 
-.menu li {
+.navbar-brand {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    background-color: white;
+    border: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1); /* Hace que el icono sea blanco */
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    transition: 0.3s;
     margin-left: 50px;
 }
 
-.menu a {
-    color: white;
-    text-decoration: none;
-    position: relative;
-}
-
-.menu a:hover {
-    color: orange;
-    padding-bottom: 2px;
-    border-bottom: 2px solid;
+.navbar-nav .nav-link:hover {
+    color: rgb(255, 174, 0);
+    text-decoration: underline;
 }
