@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.cabecera {
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    background-color: #232530;
+    color: white;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    margin-left: 50px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.menu a:hover {
+    color: orange;
+    padding-bottom: 2px;
+    border-bottom: 2px solid;
+}
