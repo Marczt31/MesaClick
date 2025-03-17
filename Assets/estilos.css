@@ -3,17 +3,44 @@
     padding: 0;
 }
 
-
-
+/* css header */
 .cabecera {
     font-family: "Roboto", sans-serif;
     font-size: 25px;
     background-color: #232530;
     color: white;
     padding: 10px 30px;
-    height: 100px;
+    height: auto;
 }
 
+.logo {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: auto;
+    width: 50px;
+    margin-right: 8px;
+}
+
+/* logo responsive */
+@media (max-width: 768px) {
+    .logo-img {
+        width: 30px; /* Reduce el tamaño del SVG en pantallas pequeñas */
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+}
+
+/* Nav responsive */
 @media (max-width: 991px) {
     .navbar-collapse {
         position: absolute;
@@ -55,4 +82,32 @@
 .navbar-nav .nav-link:hover {
     color: rgb(255, 174, 0);
     text-decoration: underline;
+}
+
+/* css home */
+
+/* css footer */
+@media (max-width: 768px) {
+    .pie footer {
+        flex-direction: column;
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .pie .nav {
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+.pie {
+    background-color: #232530;
+    color: white;
+    padding: 10px 30px;
+    height: auto;
+    width: 100%;
+}
+
+.bi {
+    font-size: 20px;
 }
