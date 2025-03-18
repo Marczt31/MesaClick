@@ -11,6 +11,7 @@
     color: white;
     padding: 10px 30px;
     height: auto;
+    width: 100%;
 }
 
 .logo {
@@ -29,25 +30,25 @@
     margin-right: 8px;
 }
 
-/* logo responsive */
+/* logo y nav responsive */
 @media (max-width: 768px) {
     .logo-img {
-        width: 30px; /* Reduce el tamaño del SVG en pantallas pequeñas */
+        width: 30px; 
     }
 
     .logo {
         font-size: 30px;
     }
-}
 
-/* Nav responsive */
-@media (max-width: 991px) {
     .navbar-collapse {
-        position: absolute;
+        position: relative;
         background-color: #232530;
-        top: 100%;
         width: 100%;
-        overflow: hidden; 
+        z-index: 10;
+    }
+
+    .cabecera {
+        z-index: 1000;
     }
 
     .navbar-nav {
@@ -85,7 +86,35 @@
 }
 
 /* css home */
+.title-res {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    margin: 1.25em 0.6em;
+}
+.carousel-item img {
+    width: 100%;  
+    max-width: 900px; 
+    margin: 0 auto; 
+}
 
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%; /* Ajusta el tamaño del área de clic */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3em; /* Tamaño del icono */
+    height: 3em;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    border-radius: 50%; /* Hace que los botones sean redondos */
+    padding: 0.6em;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.8); /* Más oscuro al pasar el mouse */
+}
 /* css footer */
 @media (max-width: 768px) {
     .pie footer {
