@@ -36,27 +36,27 @@
     
     <div class="col-md-12 mb-3">
         <!-- <label for="nombre" class="form-label">Nombre y Apellidos</label> -->
-        <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="Nombre y Apellidos" autocomplete="off" required>
+        <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="Nombre y Apellidos" autocomplete="off" >
     </div>
         
     <div class="col-md-12 mb-3">
         <!-- <label for="email" class="form-label">Email</label> -->
-        <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off" required>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off" >
     </div>
         
     <div class="col mb-3">
         <!-- <label for="telefono" class="form-label">Teléfono</label> -->
-        <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Teléfono Ej: +34 600 123 456" autocomplete="off" required>
+        <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Teléfono Ej: +34 600 123 456" autocomplete="off" >
     </div>
     
     <div class="col-md-12 mb-3">
         <!-- <label for="password" class="form-label">Contraseña</label> -->
-        <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" autocomplete="off" required>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" autocomplete="off" >
     </div>
         
     <div class="col-md-12 mb-3">
         <!-- <label for="confirmarClave" class="form-label">Confirmar Contraseña</label> -->
-        <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" placeholder="Confirmar contraseña" autocomplete="off" required>
+        <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" placeholder="Confirmar contraseña" autocomplete="off" >
     </div>
         
     <button id="botonEnviar" type="submit" class="col btn btn-primary w-25 mx-auto d-block">Enviar</button>

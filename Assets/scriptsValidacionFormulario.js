@@ -3,6 +3,9 @@ $(document).ready(function() {
     $("#formularioAltaUsuario").submit(function(e) {
         e.preventDefault();  // Evitar el envío tradicional
 
+        // Limpiar mensajes de error previos
+        $(".error").remove();
+
         // Obtener los valores de los campos
         let nombre = $("#nombre").val().trim();
         let email = $("#email").val().trim();
@@ -13,35 +16,41 @@ $(document).ready(function() {
         let valido = true;  // Bandera para verificar la validez
 
         // Validación de cada campo
+
+        // Validación de 'Nombre'
         if (!nombre) {
-            alert("El campo 'Nombre' es obligatorio.");
+            $("#nombre").after('<span class="error">El campo "Nombre" es obligatorio.</span>');
             valido = false;
         }
 
-        let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        // Validación de 'Email'
+        let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!email || !emailRegex.test(email)) {
-            alert("Por favor, ingrese un email válido.");
+            $("#email").after('<span class="error">Por favor, ingrese un email válido.</span>');
             valido = false;
         }
 
+        // Validación de 'Teléfono'
         let telefonoRegex = /^\+?\d{1,3}?[-.\s]?\(?\d{1,4}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}$/;
         if (!telefono || !telefonoRegex.test(telefono)) {
-            alert("Por favor, ingrese un teléfono válido.");
+            $("#telefono").after('<span class="error">Por favor, ingrese un teléfono válido.</span>');
             valido = false;
         }
 
+        // Validación de 'Contraseña'
         if (!password) {
-            alert("El campo 'Contraseña' es obligatorio.");
+            $("#password").after('<span class="error">El campo "Contraseña" es obligatorio.</span>');
             valido = false;
         }
 
+        // Validación de 'Confirmar Contraseña'
         if (password !== confirmarClave) {
-            alert("Las contraseñas no coinciden.");
+            $("#confirmarClave").after('<span class="error">Las contraseñas no coinciden.</span>');
             valido = false;
         }
 
         // Si todo es válido, enviar los datos con AJAX
-        if (valido) {
+        /*if (valido) {
             $.ajax({
                 url: 'servidor.php',  // URL donde enviarás los datos
                 type: 'POST',
@@ -53,14 +62,16 @@ $(document).ready(function() {
                 },
                 success: function(response) {
                     alert('Formulario enviado correctamente.');
-                    // Aquí podrías hacer algo más con la respuesta del servidor
+                    // Limpiar el formulario si es necesario
+                    $("#formularioAltaUsuario")[0].reset();
                 },
                 error: function() {
                     alert('Hubo un error al enviar el formulario.');
                 }
             });
         } else {
+            // Si hay errores, mostrar una alerta general
             alert("Por favor, corrija los errores en el formulario.");
-        }
+        }*/
     });
 });

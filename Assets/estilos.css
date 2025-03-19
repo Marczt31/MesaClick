@@ -147,6 +147,8 @@
 
 .form-control {
     
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
     height: 60px;
     margin: 10px 0;
     padding: 10px;
@@ -211,4 +213,12 @@ input:hover {
 
 .bi {
     font-size: 20px;
+}
+
+.error {
+    color: red;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    margin-top: 5px;
+    display: block;
 }
