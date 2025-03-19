@@ -25,49 +25,48 @@
 <body>
 
 <?php 
+
     include 'Includes/header.html';
+
 ?> 
           
-<h2 class="tituloSeccion text-center mb-4">Registro</h2>
+<h3 class="tituloSeccion text-center mt-5">Registro</h3>
 
-<form action="" id="formularioAltaUsuario" class="container mt-4 p-4 border rounded bg-light shadow">
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="nombre" class="form-label">Nombre y Apellidos</label>
-            <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="Nombre y Apellidos" autocomplete="off" required>
-        </div>
-        
-        <div class="col-md-6 mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="email" autocomplete="off" required>
-        </div>
-    </div>
+<form action="" id="formularioAltaUsuario" class="containerRegistro w-25 p-4 mt-5 border rounded bg-light shadow">
     
-    <div class="mb-3">
-        <label for="telefono" class="form-label">Teléfono</label>
+    <div class="col-md-12 mb-3">
+        <!-- <label for="nombre" class="form-label">Nombre y Apellidos</label> -->
+        <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="Nombre y Apellidos" autocomplete="off" required>
+    </div>
+        
+    <div class="col-md-12 mb-3">
+        <!-- <label for="email" class="form-label">Email</label> -->
+        <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off" required>
+    </div>
+        
+    <div class="col mb-3">
+        <!-- <label for="telefono" class="form-label">Teléfono</label> -->
         <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Teléfono Ej: +34 600 123 456" autocomplete="off" required>
     </div>
     
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" autocomplete="off" required>
-        </div>
-        
-        <div class="col-md-6 mb-3">
-            <label for="confirmarClave" class="form-label">Confirmar Contraseña</label>
-            <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" placeholder="Confirmar contraseña" autocomplete="off" required>
-        </div>
+    <div class="col-md-12 mb-3">
+        <!-- <label for="password" class="form-label">Contraseña</label> -->
+        <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" autocomplete="off" required>
     </div>
-    
-    <button id="botonEnviar" type="submit" class="btn btn-primary w-100">Enviar</button>
+        
+    <div class="col-md-12 mb-3">
+        <!-- <label for="confirmarClave" class="form-label">Confirmar Contraseña</label> -->
+        <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" placeholder="Confirmar contraseña" autocomplete="off" required>
+    </div>
+        
+    <button id="botonEnviar" type="submit" class="col btn btn-primary w-25 mx-auto d-block">Enviar</button>
 </form>
 
-    <?php 
+<?php 
     
     include 'Includes/footer.html';
-    
-    ?>
+
+?>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
 </body>
