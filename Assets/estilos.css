@@ -115,6 +115,20 @@
 .carousel-control-next:hover .carousel-control-next-icon {
     background-color: rgba(0, 0, 0, 0.8); /* Más oscuro al pasar el mouse */
 }
+
+.descripcion-cuadro {
+    font-family: "Roboto", sans-serif;
+    background-color: white; 
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    max-width: 40em;
+}
+
+.descripcion-cuadro > p {
+    font-size: 1.5em;
+}
+
 /* css footer */
 @media (max-width: 768px) {
     .pie footer {
