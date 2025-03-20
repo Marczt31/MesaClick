@@ -128,6 +128,17 @@
 .descripcion-cuadro > p {
     font-size: 1.5em;
 }
+
+.pdf-container {
+    height: 900px; 
+    overflow: hidden;
+}
+
+.iframe-pdf {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 /* css registro */
 
 .tituloSeccion {
