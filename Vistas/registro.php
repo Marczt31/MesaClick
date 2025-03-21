@@ -36,7 +36,7 @@
     
     <div class="col-md-12 mb-3">
         <!-- <label for="nombre" class="form-label">Nombre y Apellidos</label> -->
-        <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="Nombre y Apellidos" autocomplete="off" >
+        <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="Usuario" autocomplete="off" >
     </div>
         
     <div class="col-md-12 mb-3">
@@ -46,7 +46,7 @@
         
     <div class="col mb-3">
         <!-- <label for="telefono" class="form-label">Teléfono</label> -->
-        <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Teléfono Ej: +34 600 123 456" autocomplete="off" >
+        <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" autocomplete="off" >
     </div>
     
     <div class="col-md-12 mb-3">
@@ -59,7 +59,7 @@
         <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" minlength="6" placeholder="Confirmar contraseña" autocomplete="off" >
     </div>
         
-    <button id="botonEnviar" type="submit" class="col btn btn-primary w-25 mx-auto d-block">Enviar</button>
+    <button id="botonEnviar" type="submit" class="col btn btn-primary w-100 mx-auto d-block">Enviar</button>
 </form>
 
 <?php 
