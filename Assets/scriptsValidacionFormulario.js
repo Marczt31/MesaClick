@@ -50,7 +50,7 @@ $(document).ready(function() {
         }
 
         // Si todo es válido, enviar los datos con AJAX
-        /*if (valido) {
+        if (valido) {
             $.ajax({
                 url: 'servidor.php',  // URL donde enviarás los datos
                 type: 'POST',
@@ -72,6 +72,6 @@ $(document).ready(function() {
         } else {
             // Si hay errores, mostrar una alerta general
             alert("Por favor, corrija los errores en el formulario.");
-        }*/
+        }
     });
 });

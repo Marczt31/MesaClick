@@ -56,7 +56,7 @@
         
     <div class="col-md-12 mb-3">
         <!-- <label for="confirmarClave" class="form-label">Confirmar Contraseña</label> -->
-        <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" placeholder="Confirmar contraseña" autocomplete="off" >
+        <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" minlength="6" placeholder="Confirmar contraseña" autocomplete="off" >
     </div>
         
     <button id="botonEnviar" type="submit" class="col btn btn-primary w-25 mx-auto d-block">Enviar</button>
