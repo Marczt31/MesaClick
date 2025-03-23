@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante Don Giovanni</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../Assets/scriptsValidacionFormulario.js"></script>
-    
+    <script src="../Assets/scriptsValidacionFormulario.js"></script> 
+        
      <!-- link css de Bootsrap -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- link iconos de Bootsrap -->
@@ -32,7 +32,7 @@
           
 <h3 class="tituloSeccion text-center mt-5">Registro</h3>
 
-<form action="" id="formularioAltaUsuario" class="containerRegistro w-25 p-4 mt-5 border rounded bg-light shadow">
+<form action="#" method="post" id="formularioAltaUsuario" class="containerRegistro w-25 p-4 mt-5 border rounded bg-light shadow">
     
     <div class="col-md-12 mb-3">
         <!-- <label for="nombre" class="form-label">Nombre y Apellidos</label> -->
@@ -56,7 +56,7 @@
         
     <div class="col-md-12 mb-3">
         <!-- <label for="confirmarClave" class="form-label">Confirmar Contraseña</label> -->
-        <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" minlength="6" placeholder="Confirmar contraseña" autocomplete="off" >
+        <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" placeholder="Confirmar contraseña" autocomplete="off" >
     </div>
         
     <button id="botonEnviar" type="submit" class="col btn btn-primary w-100 mx-auto d-block">Enviar</button>
