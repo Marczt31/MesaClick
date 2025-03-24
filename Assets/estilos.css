@@ -159,7 +159,7 @@
 .form-control {
     
     font-family: "Roboto", sans-serif;
-    font-size: clamp(0.5rem, 2vw, 1.3rem);
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
     height: clamp(3vh, 60px, 60px);
     margin: 10px 0;
     padding: 10px;
@@ -168,9 +168,7 @@
 }
 
 input::placeholder {
-
-    
-    font-size: clamp(0.5rem, 2vw, 1.3rem);
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
     padding-left: 10px;
 }
 
@@ -181,7 +179,7 @@ input::placeholder {
     background-color: #EDCB9C;
     margin: 10px 0;
     padding: 10px;
-    font-size: clamp(0.4rem, 2vw, 1.3rem);
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
     text-align: center;
     color: black;
    
