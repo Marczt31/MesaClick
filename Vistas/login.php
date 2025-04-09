@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurante Don Giovanni</title>
+    <link rel="shortcut icon" href="Assets/imagenes/cuchillos_blanco.png" />
+    <title>MesaClick</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../Assets/scriptsValidacionFormulario.js"></script> 
         
