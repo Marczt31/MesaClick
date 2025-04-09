@@ -1,13 +1,14 @@
 
+ //Garantiza que el código se ejecuta cuando el DOM esté completamente cargado
  $(document).ready(function() {
      // Manejar el evento de envío del formulario
      $("#formularioAltaUsuario").submit(function(e) {
-         e.preventDefault();  // Evitar el envío tradicional
+         e.preventDefault();  // Evitar el envío tradicional antes de validar el formulario
 
          // Limpiar mensajes de error previos
          $(".error").remove();
 
-         // Obtener los valores de los campos
+         // Obtener los valores de los campos, eliminando espacios al principio y al final
          let nombre = $("#nombre").val().trim();
          let email = $("#email").val().trim();
          let telefono = $("#telefono").val().trim();
@@ -20,8 +21,9 @@
 
          // Validación de 'Nombre'
          if (!nombre) {
-             $("#nombre").after('<span class="error">El campo "Nombre" es obligatorio.</span>');
-             valido = false;
+            // Agrega un mensaje de error justo después del campo de entrada
+            $("#nombre").after('<span class="error">El campo "Nombre" es obligatorio.</span>');
+             valido = false; //cambia la bandera a false
          }
 
          // Validación de 'Email'
@@ -55,10 +57,10 @@
              valido = false;
          }
 
-         // Si todas las validaciones son correctas , enviar el formulario
+         // Si todas las validaciones son correctas , se envia el formulario
          if(valido) {
-            alert("Formulario validado correctamente");
-            this.submit();
+            alert("Formulario validado correctamente"); //Muestra un mensaje de confirmacion de que se ha enviado
+            this.submit(); // envia el formulario
          }
      });
  });

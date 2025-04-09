@@ -19,13 +19,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php 
-    include 'Vistas/Includes/header.html';
+<?php 
 
-    include 'Vistas/Includes/home.html';
+require_once 'Controladores/UsuarioController.php';
 
-    include 'Vistas/Includes/footer.html';
-    ?>
+$controlador = new UsuarioController();
+
+// Verifica si se está haciendo un POST (registro) o si se pidió específicamente el formulario
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' || (isset($_GET['accion']) && $_GET['accion'] === 'registro')) {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controlador->registrar();
+    } else {
+        $controlador->mostrarFormulario();
+    }
+    exit; // Evita seguir cargando otras vistas después del formulario
+}
+
+
+include 'Vistas/Includes/header.html';
+
+include 'Vistas/Includes/home.html';
+
+include 'Vistas/Includes/footer.html';
+
+?>
     <!--Script de Bootsrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
