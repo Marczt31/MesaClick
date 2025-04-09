@@ -15,7 +15,7 @@ class UsuarioController {
             $usuario->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
             if ($usuario->guardar()) {
-                include 'Vistas/success.php';
+                include 'Vistas/registroSatisfactorio.php';
             } else {
                 echo "<h2>Error al registrar el usuario.</h2>"; 
                 echo "<a href='Vistas/registro.php'>Volver al registro</a>";
