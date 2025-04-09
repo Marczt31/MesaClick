@@ -1,3 +1,5 @@
+<?php define('BASE_URL', '/MesaClick')?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

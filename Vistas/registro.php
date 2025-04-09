@@ -1,3 +1,9 @@
+<?php include_once __DIR__ . '/../Controladores/controladorRegistro.php'; ?>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+    <div class="alert alert-success text-center w-50 mx-auto mt-4">
+        ¡Usuario registrado con éxito!
+    </div>
+<?php endif; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +38,7 @@
 <div class="container">        
     <h3 class="tituloSeccion text-center mt-5">Registro</h3>
 
-    <form action="#" method="post" id="formularioAltaUsuario" class="containerRegistro w-50 w-lg-25 mt-5 mb-5 p-4 border rounded bg-light shadow">
+    <form action="../Controladores/controladorRegistro.php" method="post" id="formularioAltaUsuario" class="containerRegistro w-50 w-lg-25 mt-5 mb-5 p-4 border rounded bg-light shadow">
         
         <div class="col-md-12 mb-3">
             <!-- <label for="nombre" class="form-label">Nombre y Apellidos</label> -->

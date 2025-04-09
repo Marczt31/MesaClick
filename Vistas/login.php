@@ -30,7 +30,7 @@
 
 ?> 
 <div class="container">        
-    <h3 class="tituloSeccion text-center mt-5">Iniciar sesiónes</h3>
+    <h3 class="tituloSeccion text-center mt-5">Iniciar sesión</h3>
 
     <form action="#" method="post" id="login" class="containerRegistro w-50 w-lg-25 mt-5 mb-5 p-4 border rounded bg-light shadow">
         
