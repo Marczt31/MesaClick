@@ -234,3 +234,19 @@ input:hover {
     margin-top: 5px;
     display: block;
 }
+
+/* css registroSatisfactorio */
+.mensajes {
+    font-family: "Roboto", sans-serif;
+    margin-top: 130px;
+}
+
+.mensajes a {
+    color: white;
+    background-color: #232530;
+}
+
+.mensajes a:hover {
+    background-color: white;
+    border: 2px solid black;
+}

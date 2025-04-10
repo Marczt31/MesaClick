@@ -17,8 +17,17 @@ class UsuarioController {
             if ($usuario->guardar()) {
                 include 'Vistas/registroSatisfactorio.php';
             } else {
-                echo "<h2>Error al registrar el usuario.</h2>"; 
-                echo "<a href='Vistas/registro.php'>Volver al registro</a>";
+                include 'Vistas/Includes/header.html';
+
+                echo "
+                    <body class='d-flex flex-column min-vh-100'>
+                        <div class='container text-center flex-fill mensajes'>
+                            <h2 class='alert alert-danger'>Error al registrar el usuario.</h2>
+                            <a href='Vistas/registro.php' class='btn'>Volver al registro</a>
+                        </div>
+                    </body>";
+
+                include 'Vistas/Includes/footer.html';
             }
         }
     }

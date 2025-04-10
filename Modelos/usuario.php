@@ -25,8 +25,17 @@ class Usuario {
         // Si el correo ya está registrado, retornar un error
         if ($count > 0) {
             // Mostrar un mensaje de error con un botón para regresar al registro
-            
-            echo "<h2>El correo electrónico ya está registrado. Por favor, usa otro correo.</h2>";
+            include 'Vistas/Includes/header.html';
+
+            echo "
+            <body class='d-flex flex-column min-vh-100'>
+                <div class='container text-center flex-fill mensajes'>
+                    <h2 class='alert alert-danger'>El correo electrónico ya está registrado. Por favor, usa otro correo.</h2>
+                    <a href='Vistas/registro.php' class='btn'>Volver al registro</a>
+                </div>
+            </body>";
+
+            include 'Vistas/Includes/footer.html';
             
             return false;
         }
