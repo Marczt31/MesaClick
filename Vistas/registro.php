@@ -23,14 +23,14 @@
     
 </head>    
     
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <?php 
 
     include 'Includes/header.html';
 
 ?> 
-<div class="container">        
+<div class="container flex-fill">        
     <h3 class="tituloSeccion text-center mt-5">Registro</h3>
 
     <form action="../index.php?accion=registro" method="POST" id="formularioAltaUsuario" class="containerRegistro w-50 w-lg-25 mt-5 mb-5 p-4 border rounded bg-light shadow">
