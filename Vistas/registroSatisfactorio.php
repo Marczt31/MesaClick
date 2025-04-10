@@ -28,7 +28,7 @@
 
     <div class="container text-center flex-fill mensajes">
         <h2 class="alert alert-success">¡Registro completado con éxito!</h2>
-        <a href="../index.php" class="btn">Volver al inicio</a>
+        <a href="/MesaClick/index.php" class="btn">Volver al inicio</a>
     </div>
 
     <?php 

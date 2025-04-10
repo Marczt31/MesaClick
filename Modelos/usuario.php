@@ -37,9 +37,11 @@ class Usuario {
 
             include 'Vistas/Includes/footer.html';
             
-            return false;
+            exit;
         }
 
+    
+        
         // Si el correo no está registrado, proceder con el registro del usuario
         $query = "INSERT INTO usuarios (nombre, email, telefono, password) VALUES (:nombre, :email, :telefono, :password)";
         $stmt = $this->conn->prepare($query);

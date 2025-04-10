@@ -17,17 +17,17 @@ class UsuarioController {
             if ($usuario->guardar()) {
                 include 'Vistas/registroSatisfactorio.php';
             } else {
-                include 'Vistas/Includes/header.html';
+                // include 'Vistas/Includes/header.html';
 
-                echo "
-                    <body class='d-flex flex-column min-vh-100'>
-                        <div class='container text-center flex-fill mensajes'>
-                            <h2 class='alert alert-danger'>Error al registrar el usuario.</h2>
-                            <a href='Vistas/registro.php' class='btn'>Volver al registro</a>
-                        </div>
-                    </body>";
+                // echo "
+                //     <body class='d-flex flex-column min-vh-100'>
+                //         <div class='container text-center flex-fill mensajes'>
+                //             <h2 class='alert alert-danger'>Error al registrar el usuario. El correo ya está registrado.</h2>
+                //             <a href='Vistas/registro.php' class='btn'>Volver al registro</a>
+                //         </div>
+                //     </body>";
 
-                include 'Vistas/Includes/footer.html';
+                // include 'Vistas/Includes/footer.html';
             }
         }
     }
