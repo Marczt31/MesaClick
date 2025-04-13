@@ -17,6 +17,7 @@ class UsuarioController {
             if ($usuario->guardar()) {
                 include 'Vistas/registroSatisfactorio.php';
             } else {
+
                 // include 'Vistas/Includes/header.html';
 
                 // echo "
