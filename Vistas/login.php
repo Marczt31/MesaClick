@@ -33,7 +33,7 @@
 <div class="container flex-fill">        
     <h3 class="tituloSeccion text-center mt-5">Iniciar sesión</h3>
 
-    <form action="#" method="post" id="login" class="containerRegistro w-50 w-lg-25 mt-5 mb-5 p-4 border rounded bg-light shadow">
+    <form action="/MesaClick/index.php?accion=autenticar" method="post" id="login" class="containerRegistro w-50 w-lg-25 mt-5 mb-5 p-4 border rounded bg-light shadow">
         
         
             
@@ -50,6 +50,13 @@
         <button id="botonEnviar" type="submit" class="col btn btn-primary w-100 mx-auto d-block">Enviar</button>
     </form>
 </div> 
+
+<?php if (isset($_GET['error']) && $_GET['error'] === 'credenciales'): ?>
+    <div class="alert alert-danger text-center mt-3">
+        Credenciales incorrectas. Por favor, intenta nuevamente.
+    </div>
+<?php endif; ?>
+
 
 <?php 
     

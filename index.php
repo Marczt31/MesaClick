@@ -21,28 +21,67 @@
 <body>
 <?php 
 
-require_once 'Controladores/UsuarioController.php';
+session_start(); // Inicia la sesión al principio de la página
 
-$controlador = new UsuarioController();
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['usuario'])) {
+    // Si está autenticado, mostrar su información
+    $usuario = $_SESSION['usuario']; // Obtener la información del usuario
 
-// Verifica si se está haciendo un POST (registro) o si se pidió específicamente el formulario
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' || (isset($_GET['accion']) && $_GET['accion'] === 'registro')) {
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $controlador->registrar();
-    } else {
-        $controlador->mostrarFormulario();
-    }
-    exit; // Evita seguir cargando otras vistas después del formulario
+    include 'Vistas/Includes/header.html';
+    echo "
+        <div class='container'>
+            <h2>Bienvenido, " . htmlspecialchars($usuario['nombre']) . "</h2>
+            <a href='logout.php' class='btn btn-danger'>Cerrar sesión</a>
+        </div>
+    ";
+    include 'Vistas/Includes/home.html';
+    include 'Vistas/Includes/footer.html';
+    exit; // Salir del script para no ejecutar más código
 }
 
+require_once 'Controladores/UsuarioController.php';
+require_once 'Controladores/LoginController.php'; 
 
-include 'Vistas/Includes/header.html';
 
-include 'Vistas/Includes/home.html';
 
-include 'Vistas/Includes/footer.html';
+$usuarioController = new UsuarioController();
+$loginController = new LoginController();
+
+
+$accion = $_GET['accion'] ?? null;
+
+
+
+
+// Gestión del registro
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'registro') {
+    $usuarioController->registrar();
+    exit;
+}
+
+// Mostrar formulario de registro
+if ($accion === 'registro') {
+    $usuarioController->mostrarFormulario();
+    exit;
+}
+
+// Mostrar formulario de login
+if ($accion === 'login') {
+    $loginController->mostrarFormulario();
+    exit;
+}
+
+// Procesar autenticación del login
+if ($accion === 'autenticar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $loginController->autenticar();
+    exit;
+}
+
+    include 'Vistas/Includes/header.html';
+    include 'Vistas/Includes/home.html';
+    include 'Vistas/Includes/footer.html';
+
 
 ?>
     <!--Script de Bootsrap -->

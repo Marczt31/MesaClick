@@ -53,4 +53,11 @@ class Usuario {
 
         return $stmt->execute();
     }
+
+    public function obtenerPorEmail($email) {
+        $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE email = :email LIMIT 1");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
