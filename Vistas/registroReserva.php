@@ -6,7 +6,6 @@
     <link rel="shortcut icon" href="../Assets/imagenes/cuchillos_blanco.png" />
     <title>MesaClick</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../Assets/scriptsValidacionFormulario.js"></script> 
         
      <!-- link css de Bootsrap -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -36,7 +35,7 @@
     <form action="../index.php?accion=reserva" method="POST" class="containerRegistro w-50 w-lg-25 mt-5 mb-5 p-4 border rounded bg-light shadow">
         
         <div class="col-md-12 mb-3">
-            <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="Nombre" autocomplete="off" >
+            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autocomplete="off" >
         </div>
             
         <div class="col-md-12 mb-3">
@@ -66,9 +65,9 @@ document.getElementById('hora').addEventListener('change', cargarMesas);
 function cargarMesas() {
     const fecha = document.getElementById('fecha').value;
     const hora = document.getElementById('hora').value;
-
+    console.log(fecha + " " + hora)
     if (fecha && hora) {
-        fetch(`index.php?accion=obtenerMesas&fecha=${fecha}&hora=${hora}`)
+        fetch(`../index.php?accion=obtenerMesas&fecha=${fecha}&hora=${hora}`)
         .then(res => res.text())
         .then(data => {
             document.getElementById('mesa_id').innerHTML = data || '<option>No hay mesas disponibles</option>';

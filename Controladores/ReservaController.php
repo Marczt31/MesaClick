@@ -6,20 +6,21 @@ class ReservaController {
     public function mostrarFormulario() {
         include 'Vistas/registroReserva.php';
     }
-    
+
     public function obtenerMesas() {
         $fecha = $_GET['fecha'] ?? '';
         $hora = $_GET['hora'] ?? '';
-
+    
         if (!$fecha || !$hora) exit;
-
+    
         $reserva = new Reserva();
         $mesas = $reserva->obtenerMesasDisponibles($fecha, $hora);
-
-        while ($mesa = $mesas->fetch_assoc()) {
+    
+        foreach ($mesas as $mesa) {
             echo "<option value='{$mesa['id']}'>Mesa {$mesa['numero']} ({$mesa['capacidad']} personas)</option>";
         }
     }
+    
 
     public function reservar() {
         $nombre = $_POST['nombre'];
@@ -42,7 +43,7 @@ class ReservaController {
             $mensaje = "¡Reserva registrada con éxito!";
         }
 
-        require_once 'views/confirmacion.php';
+        require_once 'Vistas/registroSatisfactorio.php';
     }
 
 }

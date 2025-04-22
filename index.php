@@ -23,6 +23,7 @@
 
 session_start(); // Inicia la sesión al principio de la página
 
+
 // Verificar si el usuario está autenticado
 if (isset($_SESSION['usuario'])) {
     // Si está autenticado, mostrar su información
@@ -42,36 +43,32 @@ if (isset($_SESSION['usuario'])) {
 
 require_once 'Controladores/UsuarioController.php';
 require_once 'Controladores/LoginController.php'; 
-
-/***** */
 require_once "Controladores/ReservaController.php";
-/***** */
-
-$usuarioController = new UsuarioController();
-$loginController = new LoginController();
-
-/***** */
-$reservaController = new ReservaController();
-/***** */
 
 $accion = $_GET['accion'] ?? null;
 
+$usuarioController = new UsuarioController();
+$loginController = new LoginController();
+$reservaController = new ReservaController();
 
-/*************************************************/
+
+
+// AJAX: Cargar mesas disponibles dinámicamente
+if ($accion === 'obtenerMesas') {
+    $reservaController->obtenerMesas();
+    exit;
+}
+
 // Gestión del registro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'reserva') {
     $reservaController->reservar();
     exit;
 }
-
 // Mostrar formulario de reserva
 if ($accion === 'reserva') {
     $reservaController->mostrarFormulario();
     exit;
 }
-
-/*************************************************/
-
 
 // Gestión del registro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'registro') {
