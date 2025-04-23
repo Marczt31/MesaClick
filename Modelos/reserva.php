@@ -9,24 +9,29 @@ class Reserva {
         $this->conn = $db->getConnection();
     }
 
-
     public function obtenerMesasDisponibles($fecha, $hora) {
-        $sql = "SELECT * FROM mesas WHERE id NOT IN (
-            SELECT mesa_id FROM reservas WHERE fecha = :fecha AND hora = :hora
-        )";
-        
-        // Preparar la consulta
+        // Calcular el intervalo de tiempo
+        $horaInicio = $hora;
+        $horaFin = date("H:i:s", strtotime($horaInicio) + 3600); // +1 hora
+    
+        $sql = "SELECT * FROM mesas 
+                WHERE id NOT IN (
+                    SELECT mesa_id FROM reservas 
+                    WHERE fecha = :fecha 
+                    AND (
+                        (hora < :hora_fin AND ADDTIME(hora, '01:00:00') > :hora_inicio)
+                    )
+                )";
+    
         $stmt = $this->conn->prepare($sql);
         
-        // Vincular los parámetros
-        $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
-        $stmt->bindParam(':hora', $hora, PDO::PARAM_STR);
+        $stmt->execute([
+            ':fecha' => $fecha,
+            ':hora_inicio' => $horaInicio,
+            ':hora_fin' => $horaFin
+        ]);
         
-        // Ejecutar la consulta
-        $stmt->execute();
-        
-        // Obtener el resultado
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);  // Puedes cambiar esto según lo que necesites
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
 
@@ -46,23 +51,6 @@ class Reserva {
         ]);
     }
 
-    /*
-    public function mesaOcupada($fecha, $hora, $mesa_id) {
-        $sql = "SELECT * FROM reservas WHERE fecha = :fecha AND hora = :hora AND mesa_id = :mesa_id";
-    
-        // Preparar la consulta
-        $stmt = $this->conn->prepare($sql);
-    
-        // Ejecutar la consulta con los parámetros
-        $stmt->execute([
-            ':fecha' => $fecha,
-            ':hora' => $hora,
-            ':mesa_id' => $mesa_id
-        ]);
-    
-        // Verificar si hay resultados
-        return $stmt->rowCount() > 0;
-    }*/
 
     public function mesaOcupada($fecha, $hora, $mesa_id) {
         // Calcular la hora fin sumando 1 hora

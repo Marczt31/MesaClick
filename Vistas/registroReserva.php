@@ -47,7 +47,7 @@
         </div>
         
         <div class="col-md-12 mb-3">
-            <input type="time" id="hora" name="hora" class="form-control" min="12:00" max="22:00" autocomplete="off" >
+            <input type="time" id="hora" name="hora" class="form-control" min="12:00" max="22:00" step="900" autocomplete="off">
         </div>
             
         <select name="mesa_id" id="mesa_id" required>
@@ -59,6 +59,19 @@
 </div> 
 
 <script>
+
+//codigo que bloque fechas anteriores a la fecha actual 
+document.addEventListener('DOMContentLoaded', function () {
+    const inputFecha = document.getElementById('fecha');
+    const hoy = new Date();
+    const yyyy = hoy.getFullYear();
+    const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+    const dd = String(hoy.getDate()).padStart(2, '0');
+    const fechaMinima = `${yyyy}-${mm}-${dd}`;
+    inputFecha.min = fechaMinima;
+});
+
+//Codigo para cargar las mesas disponibles en la hora seleccionada
 document.getElementById('fecha').addEventListener('change', cargarMesas);
 document.getElementById('hora').addEventListener('change', cargarMesas);
 
