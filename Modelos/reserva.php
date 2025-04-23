@@ -30,20 +30,6 @@ class Reserva {
     }
     
 
-    /*
-    public function guardarReserva($nombre, $email, $fecha, $hora, $mesa_id) {
-        $stmt = $this->conn->prepare("INSERT INTO reservas (nombre_cliente, email, fecha, hora, mesa_id) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssi", $nombre, $email, $fecha, $hora, $mesa_id);
-        return $stmt->execute();
-    }
-
-    public function mesaOcupada($fecha, $hora, $mesa_id) {
-        $stmt = $this->conn->prepare("SELECT * FROM reservas WHERE fecha = ? AND hora = ? AND mesa_id = ?");
-        $stmt->bind_param("ssi", $fecha, $hora, $mesa_id);
-        $stmt->execute();
-        return $stmt->get_result()->num_rows > 0;
-    }*/
-
     public function guardarReserva($nombre, $email, $fecha, $hora, $mesa_id) {
         $sql = "INSERT INTO reservas (nombre_cliente, email, fecha, hora, mesa_id) VALUES (:nombre, :email, :fecha, :hora, :mesa_id)";
     
@@ -60,6 +46,7 @@ class Reserva {
         ]);
     }
 
+    /*
     public function mesaOcupada($fecha, $hora, $mesa_id) {
         $sql = "SELECT * FROM reservas WHERE fecha = :fecha AND hora = :hora AND mesa_id = :mesa_id";
     
@@ -75,7 +62,29 @@ class Reserva {
     
         // Verificar si hay resultados
         return $stmt->rowCount() > 0;
+    }*/
+
+    public function mesaOcupada($fecha, $hora, $mesa_id) {
+        // Calcular la hora fin sumando 1 hora
+        $horaInicio = $hora;
+        $horaFin = date("H:i:s", strtotime($horaInicio) + 3600); // +1 hora
+    
+        $sql = "SELECT * FROM reservas 
+                WHERE fecha = :fecha 
+                AND mesa_id = :mesa_id 
+                AND (
+                    (hora < :hora_fin AND ADDTIME(hora, '01:00:00') > :hora_inicio)
+                )";
+    
+        $stmt = $this->conn->prepare($sql);
+    
+        $stmt->execute([
+            ':fecha' => $fecha,
+            ':mesa_id' => $mesa_id,
+            ':hora_inicio' => $horaInicio,
+            ':hora_fin' => $horaFin
+        ]);
+    
+        return $stmt->rowCount() > 0;
     }
-    
-    
 }
