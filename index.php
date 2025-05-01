@@ -24,33 +24,19 @@
 session_start(); // Inicia la sesión al principio de la página
 
 
-// Verificar si el usuario está autenticado
-if (isset($_SESSION['usuario'])) {
-    // Si está autenticado, mostrar su información
-    $usuario = $_SESSION['usuario']; // Obtener la información del usuario
 
-    include 'Vistas/Includes/header.html';
-    echo "
-        <div class='container'>
-            <h2>Bienvenido, " . htmlspecialchars($usuario['nombre']) . "</h2>
-            <a href='logout.php' class='btn btn-danger'>Cerrar sesión</a>
-        </div>
-    ";
-    include 'Vistas/Includes/home.html';
-    include 'Vistas/Includes/footer.html';
-    exit; // Salir del script para no ejecutar más código
-}
 
 require_once 'Controladores/UsuarioController.php';
 require_once 'Controladores/LoginController.php'; 
 require_once "Controladores/ReservaController.php";
-require_once "Controladores/ResenaController.php";
+require_once "Controladores/resenaController.php";
+
 $accion = $_GET['accion'] ?? null;
 
 $usuarioController = new UsuarioController();
 $loginController = new LoginController();
 $reservaController = new ReservaController();
-$reservaController = new ResenaController();
+$resenaController = new ResenaController();
 
 
 
@@ -95,15 +81,42 @@ if ($accion === 'autenticar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
+/***************************************************************************** */
 // Mostrar reseñas
 if ($accion === 'verResenas') {
     $resenaController->verResenas();
     exit;
 }
 
-// Mostrar formulario para dejar reseña
+// Formulario para dejar reseña
 if ($accion === 'registroResena') {
-    $resenaController->mostrarFormularioResena(); // 👈 La función la haremos ahora
+    $resenaController->mostrarFormularioResena();
+    exit;
+}
+
+// Guardar reseña
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'guardarResena') {
+    $resenaController->guardarResena();
+    exit;
+}
+
+/********************************************************************************* */
+
+
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['usuario'])) {
+    // Si está autenticado, mostrar su información
+    $usuario = $_SESSION['usuario']; // Obtener la información del usuario
+
+    include 'Vistas/Includes/header.html';
+    echo "
+        <div class='container'>
+            <h2>Bienvenido, " . htmlspecialchars($usuario['nombre']) . "</h2>
+            <a href='logout.php' class='btn btn-danger'>Cerrar sesión</a>
+        </div>
+    ";
+    include 'Vistas/Includes/home.html';
+    include 'Vistas/Includes/footer.html';
     exit;
 }
 

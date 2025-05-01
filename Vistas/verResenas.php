@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include 'Includes/header.html';
 ?>
 
@@ -20,18 +19,20 @@ include 'Includes/header.html';
 <div class="container flex-fill">
     <h3 class="tituloSeccion text-center mt-5">Reseñas de Clientes</h3>
 
+    <?php if (isset($_SESSION['usuario'])): ?>
     <div class="text-end mb-4">
-        <a href="registroResena.php" class="btn btn-success">
+        <a href="../index.php?accion=registroResena" class="btn btn-success">
             <i class="bi bi-chat-left-text"></i> Dejar una Reseña
         </a>
     </div>
+    <?php endif; ?>
 
     <?php if (!empty($resenas)): ?>
         <?php foreach ($resenas as $resena): ?>
             <div class="card mb-3 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title"><?= htmlspecialchars($resena['usuario']) ?></h5>
-                    <h6 class="card-subtitle text-muted mb-2"><?= date("d/m/Y H:i", strtotime($resena['fecha_resena'])) ?></h6>
+                    <h6 class="card-subtitle text-muted mb-2"><?= date("d/m/Y H:i", strtotime($resena['fecha_reseña'])) ?></h6>
                     <p class="card-text"><?= nl2br(htmlspecialchars($resena['comentario'])) ?></p>
                     <p class="text-warning mb-0">
                         <?php for ($i = 0; $i < 5; $i++): ?>
