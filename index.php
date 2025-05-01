@@ -44,12 +44,13 @@ if (isset($_SESSION['usuario'])) {
 require_once 'Controladores/UsuarioController.php';
 require_once 'Controladores/LoginController.php'; 
 require_once "Controladores/ReservaController.php";
-
+require_once "Controladores/ResenaController.php";
 $accion = $_GET['accion'] ?? null;
 
 $usuarioController = new UsuarioController();
 $loginController = new LoginController();
 $reservaController = new ReservaController();
+$reservaController = new ResenaController();
 
 
 
@@ -91,6 +92,18 @@ if ($accion === 'login') {
 // Procesar autenticación del login
 if ($accion === 'autenticar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $loginController->autenticar();
+    exit;
+}
+
+// Mostrar reseñas
+if ($accion === 'verResenas') {
+    $resenaController->verResenas();
+    exit;
+}
+
+// Mostrar formulario para dejar reseña
+if ($accion === 'registroResena') {
+    $resenaController->mostrarFormularioResena(); // 👈 La función la haremos ahora
     exit;
 }
 
