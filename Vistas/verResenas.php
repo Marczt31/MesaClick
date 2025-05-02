@@ -24,7 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
     <?php if (isset($_SESSION['usuario'])): ?>
     <div class="text-end mb-4">
-        <a href="../index.php?accion=registroResena" class="btn btn-success">
+        <a href="index.php?accion=registroResena" class="btn btn-success">
             <i class="bi bi-chat-left-text"></i> Dejar una Reseña
         </a>
     </div>
