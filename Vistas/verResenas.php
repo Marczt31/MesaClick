@@ -1,5 +1,8 @@
 <?php 
 include 'Includes/header.html';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>

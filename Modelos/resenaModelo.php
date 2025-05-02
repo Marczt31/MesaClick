@@ -28,6 +28,4 @@ class ResenaModelo {
         $stmt->bindParam(':comentario', $comentario);
         $stmt->execute();
     }
-    
-
 }

@@ -28,8 +28,6 @@ public function mostrarFormularioResena() {
         $resenas = $this->modelo->obtenerResenas();
         include 'Vistas/verResenas.php';
     }
-
-
 /***************************************************** */
     public function guardarResena() {
 
