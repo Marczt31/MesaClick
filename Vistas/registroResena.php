@@ -51,7 +51,8 @@ include 'Includes/header.html';
             <textarea id="comentario" name="comentario" class="form-control" rows="4" required></textarea>
         </div>
 
-        <button type="submit" class="col btn btn-primary w-100 mx-auto d-block">Enviar Reseña</button>
+        <button id="botonEnviar" type="submit" class="col btn btn-primary w-100 mx-auto d-block">Enviar Reseña</button>
+
     </form>
 </div>
 
