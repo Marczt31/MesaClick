@@ -23,36 +23,39 @@
 
 session_start(); // Inicia la sesión al principio de la página
 
-// Verificar si el usuario está autenticado
-if (isset($_SESSION['usuario'])) {
-    // Si está autenticado, mostrar su información
-    $usuario = $_SESSION['usuario']; // Obtener la información del usuario
 
-    include 'Vistas/Includes/header.html';
-    echo "
-        <div class='container'>
-            <h2>Bienvenido, " . htmlspecialchars($usuario['nombre']) . "</h2>
-            <a href='logout.php' class='btn btn-danger'>Cerrar sesión</a>
-        </div>
-    ";
-    include 'Vistas/Includes/home.html';
-    include 'Vistas/Includes/footer.html';
-    exit; // Salir del script para no ejecutar más código
-}
+
 
 require_once 'Controladores/UsuarioController.php';
 require_once 'Controladores/LoginController.php'; 
-
-
-
-$usuarioController = new UsuarioController();
-$loginController = new LoginController();
-
+require_once "Controladores/ReservaController.php";
+require_once "Controladores/resenaController.php";
 
 $accion = $_GET['accion'] ?? null;
 
+$usuarioController = new UsuarioController();
+$loginController = new LoginController();
+$reservaController = new ReservaController();
+$resenaController = new ResenaController();
 
 
+
+// AJAX: Cargar mesas disponibles dinámicamente
+if ($accion === 'obtenerMesas') {
+    $reservaController->obtenerMesas();
+    exit;
+}
+
+// Gestión del registro
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'reserva') {
+    $reservaController->reservar();
+    exit;
+}
+// Mostrar formulario de reserva
+if ($accion === 'reserva') {
+    $reservaController->mostrarFormulario();
+    exit;
+}
 
 // Gestión del registro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'registro') {
@@ -75,6 +78,45 @@ if ($accion === 'login') {
 // Procesar autenticación del login
 if ($accion === 'autenticar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $loginController->autenticar();
+    exit;
+}
+
+/***************************************************************************** */
+// Mostrar reseñas
+if ($accion === 'verResenas') {
+    $resenaController->verResenas();
+    exit;
+}
+
+// Formulario para dejar reseña
+if ($accion === 'registroResena') {
+    $resenaController->mostrarFormularioResena();
+    exit;
+}
+
+// Guardar reseña
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'guardarResena') {
+    $resenaController->guardarResena();
+    exit;
+}
+
+/********************************************************************************* */
+
+
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['usuario'])) {
+    // Si está autenticado, mostrar su información
+    $usuario = $_SESSION['usuario']; // Obtener la información del usuario
+
+    include 'Vistas/Includes/header.html';
+    echo "
+        <div class='container'>
+            <h2>Bienvenido, " . htmlspecialchars($usuario['nombre']) . "</h2>
+            <a href='logout.php' class='btn btn-danger'>Cerrar sesión</a>
+        </div>
+    ";
+    include 'Vistas/Includes/home.html';
+    include 'Vistas/Includes/footer.html';
     exit;
 }
 
