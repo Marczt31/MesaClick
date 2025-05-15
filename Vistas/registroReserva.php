@@ -50,7 +50,7 @@
             <input type="time" id="hora" name="hora" class="form-control" min="12:00" max="22:00" step="900" autocomplete="off">
         </div>
             
-        <select name="mesa_id" id="mesa_id" required>
+        <select name="mesa_id" id="mesa_id" class="form-select" required>
             <option value="">Selecciona una fecha y hora</option>
         </select><br>
 
