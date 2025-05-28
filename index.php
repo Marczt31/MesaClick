@@ -102,6 +102,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'guardarResena') {
 
 /********************************************************************************* */
 
+// Mostrar reservas (solo admin)
+if ($accion === 'verReservas') {
+    $reservaController->verReservas();
+    exit;
+}
+
+// Eliminar reserva (solo admin)
+if ($accion === 'eliminarReserva') {
+    $reservaController->eliminarReserva();
+    exit;
+}
+
+/********************************************************************************* */
 
 // Verificar si el usuario está autenticado
 if (isset($_SESSION['usuario'])) {
