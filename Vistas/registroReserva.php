@@ -25,7 +25,7 @@
 <body class="d-flex flex-column min-vh-100">
 
 <?php 
-
+    session_start(); 
     include 'Includes/header.html';
 
 ?> 
@@ -35,11 +35,21 @@
     <form action="../index.php?accion=reserva" method="POST" class="containerRegistro w-50 w-lg-25 mt-5 mb-5 p-4 border rounded bg-light shadow">
         
         <div class="col-md-12 mb-3">
-            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autocomplete="off" >
+            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autocomplete="off" 
+            <?php if(isset($_SESSION['usuario'])): ?>
+                value="<?= htmlspecialchars($_SESSION['usuario']['nombre']) ?>"
+                readonly
+            <?php endif; ?>
+            >
         </div>
             
         <div class="col-md-12 mb-3">
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off" >
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off" 
+            <?php if(isset($_SESSION['usuario'])): ?>
+                value="<?= htmlspecialchars($_SESSION['usuario']['email']) ?>"
+                readonly
+            <?php endif; ?>
+            >
         </div>
             
         <div class="col mb-3">

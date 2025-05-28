@@ -47,14 +47,33 @@ class ReservaController {
     }
 
     public function verReservas() {
+        /*
         if (!isset($_SESSION['usuario'])) {
             header('Location: index.php');
             exit;
         }
-
+        
         $reserva = new Reserva();
         $reservas = $reserva->obtenerTodasLasReservas();
         include 'Vistas/verReservas.php';
+        */
+
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: index.php');
+            exit;
+        }
+        
+        if ($_SESSION['usuario']['email'] === 'administrador@mesaclick.com'){
+            $reserva = new Reserva();
+            $reservas = $reserva->obtenerTodasLasReservas();
+            include 'Vistas/verReservas.php';
+        }else{
+            $reserva = new Reserva();
+            $reservas = $reserva->obtenerReservasPorUsuario($_SESSION['usuario']['email']);
+            include 'Vistas/verReservas.php';
+            
+        }
+
     }
 
     public function eliminarReserva() {
