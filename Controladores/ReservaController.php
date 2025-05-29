@@ -46,4 +46,53 @@ class ReservaController {
         require_once 'Vistas/registroSatisfactorio.php';
     }
 
+    public function verReservas() {
+        /*
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: index.php');
+            exit;
+        }
+        
+        $reserva = new Reserva();
+        $reservas = $reserva->obtenerTodasLasReservas();
+        include 'Vistas/verReservas.php';
+        */
+
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: index.php');
+            exit;
+        }
+        
+        if ($_SESSION['usuario']['email'] === 'administrador@mesaclick.com'){
+            $reserva = new Reserva();
+            $reservas = $reserva->obtenerTodasLasReservas();
+            include 'Vistas/verReservas.php';
+        }else{
+            $reserva = new Reserva();
+            $reservas = $reserva->obtenerReservasPorUsuario($_SESSION['usuario']['email']);
+            include 'Vistas/verReservas.php';
+            
+        }
+
+    }
+
+    public function eliminarReserva() {
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: index.php');
+            exit;
+        }
+
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $reserva = new Reserva();
+            if ($reserva->eliminar($id)) {
+                $_SESSION['mensaje'] = "Reserva eliminada correctamente";
+            } else {
+                $_SESSION['error'] = "Error al eliminar la reserva";
+            }
+        }
+        header('Location: index.php?accion=verReservas');
+        exit;
+    }
+
 }

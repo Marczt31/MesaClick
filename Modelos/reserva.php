@@ -75,4 +75,33 @@ class Reserva {
     
         return $stmt->rowCount() > 0;
     }
+
+    public function obtenerTodasLasReservas() {
+        $sql = "SELECT r.*, m.numero as mesa_numero, m.capacidad 
+                FROM reservas r
+                JOIN mesas m ON r.mesa_id = m.id
+                ORDER BY r.fecha DESC, r.hora DESC";
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function obtenerReservasPorUsuario($email) {
+        $sql = "SELECT r.*, m.numero as mesa_numero, m.capacidad 
+                FROM reservas r
+                JOIN mesas m ON r.mesa_id = m.id
+                WHERE r.email = :email
+                ORDER BY r.fecha DESC, r.hora DESC";
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':email' => $email]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function eliminar($id) {
+        $sql = "DELETE FROM reservas WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([':id' => $id]);
+    }
 }
