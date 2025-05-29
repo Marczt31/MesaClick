@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../Assets/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 
     <?php include 'Includes/header.html'; ?>
@@ -34,7 +34,7 @@
     <?php unset($_SESSION['error']); ?>
     <?php endif; ?>
 
-    <div class="container mt-4">
+    <div class="container mt-4 flex-fill">
         <h2 class="mb-4">Reservas</h2>
         
         <div class="table-responsive">
